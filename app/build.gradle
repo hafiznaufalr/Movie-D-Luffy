@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -39,14 +40,14 @@ android {
     productFlavors {
         development {
             dimension "full"
-            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
             buildConfigField "String", "API_KEY", "\"ebe8b65ae09a2a517ffd680266f90891\""
             buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w370_and_h556_bestv2\""
         }
 
         production {
             dimension "full"
-            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
             buildConfigField "String", "API_KEY", "\"ebe8b65ae09a2a517ffd680266f90891\""
             buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w370_and_h556_bestv2\""
         }
@@ -82,14 +83,20 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.41")
     kapt("com.google.dagger:hilt-android-compiler:2.41")
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.41")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.41")
 
     // Lifecycle
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation "androidx.activity:activity-ktx:1.5.1"
     implementation "androidx.fragment:fragment-ktx:1.5.2"
+
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+
+    debugImplementation 'com.willowtreeapps.hyperion:hyperion-core:0.9.34'
+    debugImplementation 'com.willowtreeapps.hyperion:hyperion-crash:0.9.34'
+
+    releaseImplementation 'com.willowtreeapps.hyperion:hyperion-core-no-op:0.9.34'
 
 
 }

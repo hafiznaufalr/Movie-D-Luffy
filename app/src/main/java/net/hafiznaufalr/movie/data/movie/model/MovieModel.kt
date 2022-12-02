@@ -1,5 +1,9 @@
 package net.hafiznaufalr.movie.data.movie.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieModel(
     val adult: Boolean,
     val backdropPath: String,
@@ -15,10 +19,11 @@ data class MovieModel(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Int
-)
+): Parcelable
 
+@Parcelize
 data class MovieDataModel(
     val data: List<MovieModel>,
     val page: Int,
     val totalPages: Int
-)
+): Parcelable

@@ -10,16 +10,23 @@ import net.hafiznaufalr.movie.BuildConfig.BASE_IMAGE_URL
 import net.hafiznaufalr.movie.data.movie.model.MovieModel
 import net.hafiznaufalr.movie.databinding.ItemNowPlayingBinding
 
-class NowPlayingAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NowPlayingAdapter(
+    val onItemClickListener: (MovieModel) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolder(
-            ItemNowPlayingBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+        val binding = ItemNowPlayingBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
+        return ViewHolder(binding).apply {
+            binding.root.setOnClickListener {
+                if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                    onItemClickListener.invoke(differ.currentList[bindingAdapterPosition])
+                }
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -33,7 +40,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: MovieModel) {
             binding.textViewTitle.text = item.title
-            binding.textViewRating.text = item.voteAverage.toString()
+            binding.textViewRating.text = String.format("%s/10", item.voteAverage)
             Glide.with(binding.imageViewPoster.context)
                 .load(BASE_IMAGE_URL + item.posterPath)
                 .into(binding.imageViewPoster)

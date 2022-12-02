@@ -8,13 +8,22 @@ import net.hafiznaufalr.movie.R
 import net.hafiznaufalr.movie.databinding.ActivityMainBinding
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.ui.base.MovieBaseActivity
+import net.hafiznaufalr.movie.ui.detail.DetailMovieActivity
 import net.hafiznaufalr.movie.utils.ItemHorizontalMarginDecoration
 import net.hafiznaufalr.movie.viewmodels.MovieViewModel
 
 class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
     private val viewModel: MovieViewModel by viewModels()
-    private val nowPlayingAdapter by lazy { NowPlayingAdapter() }
-    private val popularAdapter by lazy { PopularAdapter() }
+    private val nowPlayingAdapter by lazy {
+        NowPlayingAdapter {
+            DetailMovieActivity.newInstance(this, it)
+        }
+    }
+    private val popularAdapter by lazy {
+        PopularAdapter {
+            DetailMovieActivity.newInstance(this, it)
+        }
+    }
     private var nowPlayingSkeleton: Skeleton? = null
     private var popularSkeleton: Skeleton? = null
 

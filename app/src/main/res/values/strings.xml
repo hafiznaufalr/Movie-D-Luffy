@@ -2,4 +2,7 @@
     <string name="app_name">Movie D Luffy</string>
     <string name="text_now_playing">Now Playing</string>
     <string name="text_popular">Popular</string>
+    <string name="text_release_date">Release Date</string>
+    <string name="text_popularity">Popularity</string>
+    <string name="text_description">Description</string>
 </resources>

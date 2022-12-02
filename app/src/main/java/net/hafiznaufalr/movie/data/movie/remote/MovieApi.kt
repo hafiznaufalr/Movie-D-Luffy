@@ -11,4 +11,9 @@ interface MovieApi {
     suspend fun getNowPlaying(
         @Query("api_key") apikey: String = BuildConfig.API_KEY
     ): BaseResponse<List<MovieResponse>>
+
+    @GET("popular")
+    suspend fun getPopular(
+        @Query("api_key") apikey: String = BuildConfig.API_KEY
+    ): BaseResponse<List<MovieResponse>>
 }

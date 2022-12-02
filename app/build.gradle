@@ -97,6 +97,11 @@ dependencies {
     debugImplementation 'com.willowtreeapps.hyperion:hyperion-crash:0.9.34'
 
     releaseImplementation 'com.willowtreeapps.hyperion:hyperion-core-no-op:0.9.34'
+    api 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
 
+    implementation 'com.faltenreich:skeletonlayout:4.0.0'
 }

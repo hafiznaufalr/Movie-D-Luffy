@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Typography"/>
+
+    <!--Heading-->
+    <style name="Typography.Heading_2XL_Regular">
+        <item name="fontFamily">@font/nunito_sans_700</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">36dp</item>
+    </style>
+
+    <style name="Typography.Heading_2XL_Bold">
+        <item name="fontFamily">@font/nunito_sans_800</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">36dp</item>
+    </style>
+
+    <style name="Typography.Heading_XL_Regular">
+        <item name="fontFamily">@font/nunito_sans_700</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">28dp</item>
+    </style>
+
+    <style name="Typography.Heading_XL_Bold">
+        <item name="fontFamily">@font/nunito_sans_800</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">28dp</item>
+    </style>
+
+    <style name="Typography.Heading_L_Regular">
+        <item name="fontFamily">@font/nunito_sans_700</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="Typography.Heading_L_Bold">
+        <item name="fontFamily">@font/nunito_sans_800</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="Typography.Heading_M">
+        <item name="fontFamily">@font/nunito_sans_700</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="Typography.Heading_S">
+        <item name="fontFamily">@font/nunito_sans_700</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+    </style>
+
+    <style name="Typography.Heading_XS">
+        <item name="fontFamily">@font/nunito_sans_700</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16dp</item>
+    </style>
+
+    <!--Text-->
+    <style name="Typography.Text_XL_Bold">
+        <item name="fontFamily">@font/inter_700</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">36dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="Typography.Text_XL_Medium">
+        <item name="fontFamily">@font/inter_500</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">36dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="Typography.Text_XL_Regular">
+        <item name="fontFamily">@font/inter_400</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">36dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="Typography.Text_L_Bold">
+        <item name="fontFamily">@font/inter_700</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">28dp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Typography.Text_L_Medium">
+        <item name="fontFamily">@font/inter_500</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">28dp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Typography.Text_L_Regular">
+        <item name="fontFamily">@font/inter_400</item>
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">28dp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Typography.Text_M_Bold">
+        <item name="fontFamily">@font/inter_700</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Typography.Text_M_Medium">
+        <item name="fontFamily">@font/inter_500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Typography.Text_M_Regular">
+        <item name="fontFamily">@font/inter_400</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Typography.Text_S_Bold">
+        <item name="fontFamily">@font/inter_700</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16dp</item>
+    </style>
+
+    <style name="Typography.Text_S_Medium">
+        <item name="fontFamily">@font/inter_500</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16dp</item>
+    </style>
+
+    <style name="Typography.Text_S_Regular">
+        <item name="fontFamily">@font/inter_400</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16dp</item>
+    </style>
+
+    <style name="Typography.Text_XS_Bold">
+        <item name="fontFamily">@font/inter_700</item>
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">12dp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="Typography.Text_XS_Medium">
+        <item name="fontFamily">@font/inter_500</item>
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">12dp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="Typography.Text_XS_Regular">
+        <item name="fontFamily">@font/inter_400</item>
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">12dp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+</resources>

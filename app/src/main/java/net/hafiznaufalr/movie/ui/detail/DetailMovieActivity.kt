@@ -50,6 +50,8 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
             Glide.with(binding.imageViewBackdrop.context)
                 .load(BuildConfig.BASE_IMAGE_URL + it.backdropPath)
                 .into(binding.imageViewBackdrop)
+
+            genreAdapter.differ.submitList(it.genreString)
         }
     }
 

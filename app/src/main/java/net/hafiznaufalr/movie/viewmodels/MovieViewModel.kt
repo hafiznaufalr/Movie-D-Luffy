@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import net.hafiznaufalr.movie.data.movie.model.GenreModel
 import net.hafiznaufalr.movie.data.movie.model.MovieDataModel
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.domain.base.toResult
+import net.hafiznaufalr.movie.domain.genre.GenreUseCase
 import net.hafiznaufalr.movie.domain.now_playing.NowPlayingUseCase
 import net.hafiznaufalr.movie.domain.popular.PopularUseCase
 import javax.inject.Inject
@@ -16,7 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieViewModel @Inject constructor(
     private val nowPlayingUseCase: NowPlayingUseCase,
-    private val popularUseCase: PopularUseCase
+    private val popularUseCase: PopularUseCase,
+    private val genreUseCase: GenreUseCase
 ) : ViewModel() {
     private val _nowPlaying = MutableLiveData<ResultData<MovieDataModel>>()
     val nowPlaying: LiveData<ResultData<MovieDataModel>>
@@ -25,6 +28,10 @@ class MovieViewModel @Inject constructor(
     private val _popular = MutableLiveData<ResultData<MovieDataModel>>()
     val popular: LiveData<ResultData<MovieDataModel>>
         get() = _popular
+
+    private val _movieGenres = MutableLiveData<ResultData<List<GenreModel>>>()
+    val movieGenres: LiveData<ResultData<List<GenreModel>>>
+        get() = _movieGenres
 
     fun getNowPlaying() {
         _nowPlaying.value = ResultData.Loading
@@ -37,6 +44,13 @@ class MovieViewModel @Inject constructor(
         _popular.value = ResultData.Loading
         viewModelScope.launch {
             popularUseCase.invoke().toResult().run(_popular::postValue)
+        }
+    }
+
+    fun getMovieGenres() {
+        _movieGenres.value = ResultData.Loading
+        viewModelScope.launch {
+            genreUseCase.invoke().toResult().run(_movieGenres::postValue)
         }
     }
 }

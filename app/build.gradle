@@ -40,14 +40,14 @@ android {
     productFlavors {
         development {
             dimension "full"
-            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "API_KEY", "\"ebe8b65ae09a2a517ffd680266f90891\""
             buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w370_and_h556_bestv2\""
         }
 
         production {
             dimension "full"
-            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/movie/\""
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "API_KEY", "\"ebe8b65ae09a2a517ffd680266f90891\""
             buildConfigField "String", "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w370_and_h556_bestv2\""
         }

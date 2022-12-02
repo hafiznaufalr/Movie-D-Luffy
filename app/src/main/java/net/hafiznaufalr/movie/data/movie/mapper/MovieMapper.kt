@@ -8,12 +8,10 @@ import net.hafiznaufalr.movie.data.preferences.Preferences
 
 fun BaseResponse<List<MovieResponse>>.mapToModel(): MovieDataModel {
     val dataModel = arrayListOf<MovieModel>()
-    val genreString = arrayListOf<String>()
     val genres = Preferences.getGenres()
 
     this.results?.map {
-
-        genreString.clear()
+        val genreString = arrayListOf<String>()
 
         it.genreIds?.map { id ->
             genres?.find { finder -> finder.id == id }?.name?.let { result ->

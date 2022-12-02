@@ -16,6 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:alpha="0.3"
+                android:rotation="45"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_live_tv_24" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_view_title"
                 android:layout_width="match_parent"

@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">MOVIE</string>
+    <string name="app_name">Movie D Luffy</string>
     <string name="text_now_playing">Now Playing</string>
     <string name="text_popular">Popular</string>
-    <string name="text_title">Movie D Luffy</string>
 </resources>

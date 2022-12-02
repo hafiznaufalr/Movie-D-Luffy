@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.2085" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2798441569010417" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/include_now_playing_section.xml" value="0.30885416666666665" />
         <entry key="app/src/main/res/layout/include_popular_section.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/item_now_playing.xml" value="0.29375" />

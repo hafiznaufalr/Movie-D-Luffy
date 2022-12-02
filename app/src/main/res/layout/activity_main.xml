@@ -23,7 +23,7 @@
                 android:layout_marginStart="@dimen/size_16"
                 android:layout_marginTop="@dimen/size_16"
                 android:layout_marginEnd="@dimen/size_16"
-                android:text="@string/text_title"
+                android:text="@string/app_name"
                 android:textAppearance="@style/Typography.Heading_2XL_Bold"
                 android:textColor="@color/neutral_gray_800"
                 app:layout_constraintEnd_toEndOf="parent"

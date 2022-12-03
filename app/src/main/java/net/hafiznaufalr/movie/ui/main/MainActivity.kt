@@ -2,6 +2,7 @@ package net.hafiznaufalr.movie.ui.main
 
 import android.view.LayoutInflater
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import net.hafiznaufalr.movie.R
@@ -61,10 +62,28 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
     }
 
     override fun initListener() {
+        binding.iclNowPlaying.iclNetworkError.textViewRefresh.setOnClickListener {
+            viewModel.getNowPlaying()
+            showNowPlayingError(false)
+        }
+
+        binding.iclPopular.iclNetworkError.textViewRefresh.setOnClickListener {
+            viewModel.getPopular()
+            showPopularError(false)
+        }
+
         binding.swipeRefresh.setOnRefreshListener {
             initData()
             binding.swipeRefresh.isRefreshing = false
         }
+    }
+
+    private fun showPopularError(show: Boolean) {
+        binding.iclPopular.iclNetworkError.root.isVisible = show
+    }
+
+    private fun showNowPlayingError(show: Boolean) {
+        binding.iclNowPlaying.iclNetworkError.root.isVisible = show
     }
 
     override fun observer() {
@@ -75,12 +94,17 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
                 }
 
                 is ResultData.Success -> {
+                    showNowPlayingError(false)
+
                     nowPlayingSkeleton?.showOriginal()
+                    binding.iclNowPlaying.textViewNoData.isVisible = it.data.data.isEmpty()
                     nowPlayingAdapter.differ.submitList(it.data.data)
                 }
 
                 is ResultData.Failure -> {
-
+                    nowPlayingSkeleton?.showOriginal()
+                    nowPlayingAdapter.differ.submitList(emptyList())
+                    showNowPlayingError(true)
                 }
             }
         }
@@ -92,12 +116,17 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
                 }
 
                 is ResultData.Success -> {
+                    showPopularError(false)
+
                     popularSkeleton?.showOriginal()
+                    binding.iclPopular.textViewNoData.isVisible = it.data.data.isEmpty()
                     popularAdapter.differ.submitList(it.data.data)
                 }
 
                 is ResultData.Failure -> {
-
+                    popularSkeleton?.showOriginal()
+                    popularAdapter.differ.submitList(emptyList())
+                    showPopularError(true)
                 }
             }
         }

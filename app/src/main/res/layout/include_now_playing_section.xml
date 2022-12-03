@@ -17,6 +17,25 @@
         android:textAppearance="@style/Typography.Heading_XL_Regular"
         android:textColor="@color/neutral_gray_700" />
 
+    <include
+        android:id="@+id/icl_network_error"
+        layout="@layout/include_retry_get_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:gravity="center"
+        android:text="@string/text_now_playing_is_empty"
+        android:textAppearance="@style/Typography.Text_L_Medium"
+        android:textColor="@color/neutral_gray_500"
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_now_playing"
         android:layout_width="match_parent"

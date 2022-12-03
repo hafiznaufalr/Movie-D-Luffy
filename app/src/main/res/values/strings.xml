@@ -9,4 +9,6 @@
     <string name="text_no_reviews">No Reviews</string>
     <string name="text_refresh">Refresh</string>
     <string name="text_something_wrong">Something wrong</string>
+    <string name="text_now_playing_is_empty">Now Playing is empty</string>
+    <string name="text_popular_is_empty">Popular is empty</string>
 </resources>

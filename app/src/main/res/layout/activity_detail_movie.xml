@@ -164,6 +164,34 @@
                 android:textColor="@color/neutral_gray_500"
                 tools:text="With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man." />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_label_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:text="@string/text_reviews"
+                android:textAppearance="@style/Typography.Heading_L_Regular" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_view_no_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:gravity="center"
+                android:text="@string/text_no_reviews"
+                android:textAppearance="@style/Typography.Text_L_Medium"
+                android:textColor="@color/neutral_gray_500"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_review" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

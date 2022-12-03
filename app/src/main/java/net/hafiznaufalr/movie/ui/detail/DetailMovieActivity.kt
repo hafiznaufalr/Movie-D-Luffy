@@ -6,16 +6,26 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
+import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.faltenreich.skeletonlayout.Skeleton
+import com.faltenreich.skeletonlayout.applySkeleton
 import net.hafiznaufalr.movie.BuildConfig
 import net.hafiznaufalr.movie.R
 import net.hafiznaufalr.movie.data.movie.model.MovieModel
 import net.hafiznaufalr.movie.databinding.ActivityDetailMovieBinding
+import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.ui.base.MovieBaseActivity
 import net.hafiznaufalr.movie.utils.ItemHorizontalMarginDecoration
+import net.hafiznaufalr.movie.viewmodels.MovieViewModel
 
 class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
+    private val viewModel: MovieViewModel by viewModels()
     private val genreAdapter by lazy { GenreAdapter() }
+    private val reviewAdapter by lazy { ReviewAdapter() }
+    private var reviewSkeleton: Skeleton? = null
+
     override val bindingInflater: (LayoutInflater) -> ActivityDetailMovieBinding
         get() = ActivityDetailMovieBinding::inflate
 
@@ -37,6 +47,13 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
             adapter = genreAdapter
             addItemDecoration(decoration)
         }
+
+        binding.recyclerViewReview.apply {
+            adapter = reviewAdapter
+        }
+        reviewSkeleton = binding.recyclerViewReview.applySkeleton(
+            R.layout.item_review, 2
+        )
     }
 
     override fun initData() {
@@ -47,11 +64,14 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
             binding.textViewPopularity.text = it.popularity.toString()
             binding.textViewDescription.text = it.overview
 
+            val backdrop = it.backdropPath.ifEmpty { it.posterPath }
             Glide.with(binding.imageViewBackdrop.context)
-                .load(BuildConfig.BASE_IMAGE_URL + it.backdropPath)
+                .load(BuildConfig.BASE_IMAGE_URL + backdrop)
                 .into(binding.imageViewBackdrop)
 
             genreAdapter.differ.submitList(it.genreString)
+
+            viewModel.getMovieReviews(it.id)
         }
     }
 
@@ -62,6 +82,26 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
     }
 
     override fun observer() {
+        viewModel.reviews.observe(this) {
+            when (it) {
+                is ResultData.Loading -> {
+                    reviewSkeleton?.showSkeleton()
+                }
+
+                is ResultData.Success -> {
+                    reviewSkeleton?.showOriginal()
+                    binding.textViewNoReviews.isVisible = it.data.isEmpty()
+
+                    if (it.data.isNotEmpty()) {
+                        reviewAdapter.differ.submitList(it.data)
+                    }
+                }
+
+                is ResultData.Failure -> {
+
+                }
+            }
+        }
     }
 
     companion object {

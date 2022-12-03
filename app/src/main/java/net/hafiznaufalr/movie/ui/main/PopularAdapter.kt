@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import net.hafiznaufalr.movie.BuildConfig
+import net.hafiznaufalr.movie.R
 import net.hafiznaufalr.movie.data.movie.model.MovieModel
 import net.hafiznaufalr.movie.databinding.ItemPopularBinding
 
@@ -43,6 +44,7 @@ class PopularAdapter(
             binding.textViewRating.text = String.format("%s/10", item.voteAverage)
             Glide.with(binding.imageViewPoster.context)
                 .load(BuildConfig.BASE_IMAGE_URL + item.posterPath)
+                .placeholder(R.drawable.placeholder)
                 .into(binding.imageViewPoster)
         }
     }

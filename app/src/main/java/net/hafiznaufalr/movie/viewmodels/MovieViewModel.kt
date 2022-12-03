@@ -8,18 +8,21 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import net.hafiznaufalr.movie.data.movie.model.GenreModel
 import net.hafiznaufalr.movie.data.movie.model.MovieDataModel
+import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.domain.base.toResult
-import net.hafiznaufalr.movie.domain.genre.GenreUseCase
-import net.hafiznaufalr.movie.domain.now_playing.NowPlayingUseCase
-import net.hafiznaufalr.movie.domain.popular.PopularUseCase
+import net.hafiznaufalr.movie.domain.movie.GenreUseCase
+import net.hafiznaufalr.movie.domain.movie.NowPlayingUseCase
+import net.hafiznaufalr.movie.domain.movie.PopularUseCase
+import net.hafiznaufalr.movie.domain.movie.ReviewUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(
     private val nowPlayingUseCase: NowPlayingUseCase,
     private val popularUseCase: PopularUseCase,
-    private val genreUseCase: GenreUseCase
+    private val genreUseCase: GenreUseCase,
+    private val reviewUseCase: ReviewUseCase
 ) : ViewModel() {
     private val _nowPlaying = MutableLiveData<ResultData<MovieDataModel>>()
     val nowPlaying: LiveData<ResultData<MovieDataModel>>
@@ -32,6 +35,10 @@ class MovieViewModel @Inject constructor(
     private val _movieGenres = MutableLiveData<ResultData<List<GenreModel>>>()
     val movieGenres: LiveData<ResultData<List<GenreModel>>>
         get() = _movieGenres
+
+    private val _reviews = MutableLiveData<ResultData<List<MovieReviewModel>>>()
+    val reviews: LiveData<ResultData<List<MovieReviewModel>>>
+        get() = _reviews
 
     fun getNowPlaying() {
         _nowPlaying.value = ResultData.Loading
@@ -51,6 +58,13 @@ class MovieViewModel @Inject constructor(
         _movieGenres.value = ResultData.Loading
         viewModelScope.launch {
             genreUseCase.invoke().toResult().run(_movieGenres::postValue)
+        }
+    }
+
+    fun getMovieReviews(movieId: Int) {
+        _reviews.value = ResultData.Loading
+        viewModelScope.launch {
+            reviewUseCase.addParam(movieId).invoke().toResult().run(_reviews::postValue)
         }
     }
 }

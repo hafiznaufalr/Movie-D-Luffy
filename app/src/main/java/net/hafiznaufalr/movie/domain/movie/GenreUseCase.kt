@@ -1,4 +1,4 @@
-package net.hafiznaufalr.movie.domain.genre
+package net.hafiznaufalr.movie.domain.movie
 
 import net.hafiznaufalr.movie.data.movie.MovieRepository
 import net.hafiznaufalr.movie.data.movie.model.GenreModel

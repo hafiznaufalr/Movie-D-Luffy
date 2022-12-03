@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import net.hafiznaufalr.movie.BuildConfig.BASE_IMAGE_URL
+import net.hafiznaufalr.movie.R
 import net.hafiznaufalr.movie.data.movie.model.MovieModel
 import net.hafiznaufalr.movie.databinding.ItemNowPlayingBinding
 
@@ -43,6 +44,7 @@ class NowPlayingAdapter(
             binding.textViewRating.text = String.format("%s/10", item.voteAverage)
             Glide.with(binding.imageViewPoster.context)
                 .load(BASE_IMAGE_URL + item.posterPath)
+                .placeholder(R.drawable.placeholder)
                 .into(binding.imageViewPoster)
         }
     }

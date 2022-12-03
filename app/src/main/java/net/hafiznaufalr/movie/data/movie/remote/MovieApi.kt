@@ -18,7 +18,8 @@ interface MovieApi {
 
     @GET("movie/popular")
     suspend fun getPopular(
-        @Query("api_key") apikey: String = BuildConfig.API_KEY
+        @Query("api_key") apikey: String = BuildConfig.API_KEY,
+        @Query("page") page: Int
     ): BaseResponse<List<MovieResponse>>
 
     @GET("genre/movie/list")

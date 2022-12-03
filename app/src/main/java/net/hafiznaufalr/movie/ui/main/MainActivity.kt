@@ -3,6 +3,7 @@ package net.hafiznaufalr.movie.ui.main
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import androidx.core.widget.NestedScrollView
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import net.hafiznaufalr.movie.R
@@ -25,6 +26,8 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
             DetailMovieActivity.newInstance(this, it)
         }
     }
+    private var totalPage = 0
+    private var currentPage = 1
     private var nowPlayingSkeleton: Skeleton? = null
     private var popularSkeleton: Skeleton? = null
 
@@ -57,8 +60,9 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
     }
 
     override fun initData() {
+        currentPage = 1
         viewModel.getNowPlaying()
-        viewModel.getPopular()
+        viewModel.getPopular(currentPage)
     }
 
     override fun initListener() {
@@ -68,13 +72,25 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
         }
 
         binding.iclPopular.iclNetworkError.textViewRefresh.setOnClickListener {
-            viewModel.getPopular()
+            currentPage = 1
+            viewModel.getPopular(currentPage)
             showPopularError(false)
         }
 
         binding.swipeRefresh.setOnRefreshListener {
             initData()
             binding.swipeRefresh.isRefreshing = false
+        }
+
+        binding.nestedScrollView.setOnScrollChangeListener { v: NestedScrollView, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+            if (scrollY == v.getChildAt(0).measuredHeight - v.measuredHeight) {
+                if (totalPage >= currentPage) {
+                    showLoadMore(true)
+                    viewModel.getPopular(page = currentPage)
+                } else {
+                    showLoadMore(false)
+                }
+            }
         }
     }
 
@@ -112,24 +128,41 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
         viewModel.popular.observe(this) {
             when (it) {
                 is ResultData.Loading -> {
-                    popularSkeleton?.showSkeleton()
+                    if (currentPage == 1) {
+                        popularSkeleton?.showSkeleton()
+                    }
                 }
 
                 is ResultData.Success -> {
                     showPopularError(false)
 
                     popularSkeleton?.showOriginal()
-                    binding.iclPopular.textViewNoData.isVisible = it.data.data.isEmpty()
-                    popularAdapter.differ.submitList(it.data.data)
+
+                    if (currentPage == 1) {
+                        binding.iclPopular.textViewNoData.isVisible = it.data.data.isEmpty()
+                        popularAdapter.submitList(it.data.data, true)
+                    } else {
+                        popularAdapter.submitList(it.data.data)
+                    }
+
+                    currentPage = it.data.page + 1
+                    if (totalPage == 0) {
+                        totalPage = if (it.data.totalPages >= 10) 10 else it.data.totalPages
+                    }
                 }
 
                 is ResultData.Failure -> {
                     popularSkeleton?.showOriginal()
-                    popularAdapter.differ.submitList(emptyList())
+                    popularAdapter.submitList(emptyList(), true)
                     showPopularError(true)
                 }
             }
         }
+    }
+
+    private fun showLoadMore(show: Boolean) {
+
+        binding.loadMore.rootView.isVisible = show
     }
 
 }

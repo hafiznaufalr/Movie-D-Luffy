@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 interface MovieRepository {
     suspend fun getNowPlayingMovie(): MovieDataModel
-    suspend fun getPopularMovie(): MovieDataModel
+    suspend fun getPopularMovie(page: Int): MovieDataModel
     suspend fun getMovieGenre(): List<GenreModel>
     suspend fun getMovieReviews(movieId: Int): List<MovieReviewModel>
 }
@@ -21,8 +21,8 @@ class MovieRepositoryImpl @Inject constructor(
         return movieApi.getNowPlaying().mapToModel()
     }
 
-    override suspend fun getPopularMovie(): MovieDataModel {
-        return movieApi.getPopular().mapToModel()
+    override suspend fun getPopularMovie(page: Int): MovieDataModel {
+        return movieApi.getPopular(page = page).mapToModel()
     }
 
     override suspend fun getMovieGenre(): List<GenreModel> {

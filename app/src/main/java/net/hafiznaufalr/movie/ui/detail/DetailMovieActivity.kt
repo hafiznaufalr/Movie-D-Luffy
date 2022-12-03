@@ -67,6 +67,7 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
             val backdrop = it.backdropPath.ifEmpty { it.posterPath }
             Glide.with(binding.imageViewBackdrop.context)
                 .load(BuildConfig.BASE_IMAGE_URL + backdrop)
+                .placeholder(R.drawable.placeholder)
                 .into(binding.imageViewBackdrop)
 
             genreAdapter.differ.submitList(it.genreString)

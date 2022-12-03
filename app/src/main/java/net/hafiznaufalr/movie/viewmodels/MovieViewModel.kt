@@ -47,10 +47,10 @@ class MovieViewModel @Inject constructor(
         }
     }
 
-    fun getPopular() {
+    fun getPopular(page: Int) {
         _popular.value = ResultData.Loading
         viewModelScope.launch {
-            popularUseCase.invoke().toResult().run(_popular::postValue)
+            popularUseCase.addParam(page).invoke().toResult().run(_popular::postValue)
         }
     }
 

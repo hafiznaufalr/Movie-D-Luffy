@@ -7,4 +7,6 @@
     <string name="text_description">Description</string>
     <string name="text_reviews">Reviews</string>
     <string name="text_no_reviews">No Reviews</string>
+    <string name="text_refresh">Refresh</string>
+    <string name="text_something_wrong">Something wrong</string>
 </resources>

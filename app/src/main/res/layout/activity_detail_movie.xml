@@ -185,6 +185,14 @@
                 android:textColor="@color/neutral_gray_500"
                 android:visibility="gone" />
 
+            <include
+                android:id="@+id/icl_network_error"
+                layout="@layout/include_retry_get_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:visibility="gone" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_review"
                 android:layout_width="match_parent"

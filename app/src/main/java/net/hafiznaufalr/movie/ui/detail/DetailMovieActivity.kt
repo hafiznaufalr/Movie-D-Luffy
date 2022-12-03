@@ -79,6 +79,11 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
         binding.imageViewBack.setOnClickListener {
             finish()
         }
+
+        binding.iclNetworkError.textViewRefresh.setOnClickListener {
+            initData()
+            showNetworkError(false)
+        }
     }
 
     override fun observer() {
@@ -89,19 +94,23 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
                 }
 
                 is ResultData.Success -> {
+                    showNetworkError(false)
+
                     reviewSkeleton?.showOriginal()
                     binding.textViewNoReviews.isVisible = it.data.isEmpty()
-
-                    if (it.data.isNotEmpty()) {
-                        reviewAdapter.differ.submitList(it.data)
-                    }
+                    reviewAdapter.differ.submitList(it.data)
                 }
 
                 is ResultData.Failure -> {
-
+                    reviewSkeleton?.showOriginal()
+                    showNetworkError(true)
                 }
             }
         }
+    }
+
+    private fun showNetworkError(show: Boolean) {
+        binding.iclNetworkError.root.isVisible = show
     }
 
     companion object {

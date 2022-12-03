@@ -3,6 +3,7 @@ package net.hafiznaufalr.movie.ui.detail
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
@@ -25,6 +26,7 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
     private val genreAdapter by lazy { GenreAdapter() }
     private val reviewAdapter by lazy { ReviewAdapter() }
     private var reviewSkeleton: Skeleton? = null
+    private var keyTrailer = ""
 
     override val bindingInflater: (LayoutInflater) -> ActivityDetailMovieBinding
         get() = ActivityDetailMovieBinding::inflate
@@ -73,6 +75,7 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
             genreAdapter.differ.submitList(it.genreString)
 
             viewModel.getMovieReviews(it.id)
+            viewModel.getMovieTrailerKey(it.id)
         }
     }
 
@@ -84,6 +87,16 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
         binding.iclNetworkError.textViewRefresh.setOnClickListener {
             initData()
             showNetworkError(false)
+        }
+
+        binding.imageViewTrailer.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("http://www.youtube.com/watch?v=${keyTrailer}")
+                )
+            )
+
         }
     }
 
@@ -106,6 +119,19 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
                     reviewSkeleton?.showOriginal()
                     showNetworkError(true)
                 }
+            }
+        }
+
+        viewModel.trailerKey.observe(this) {
+            when (it) {
+                is ResultData.Loading -> {}
+
+                is ResultData.Success -> {
+                    keyTrailer = it.data
+                    binding.imageViewTrailer.isVisible = keyTrailer.isNotEmpty()
+                }
+
+                is ResultData.Failure -> {}
             }
         }
     }

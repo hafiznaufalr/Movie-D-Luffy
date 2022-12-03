@@ -12,6 +12,7 @@ interface MovieRepository {
     suspend fun getPopularMovie(page: Int): MovieDataModel
     suspend fun getMovieGenre(): List<GenreModel>
     suspend fun getMovieReviews(movieId: Int): List<MovieReviewModel>
+    suspend fun getMovieTrailerKey(movieId: Int): String
 }
 
 class MovieRepositoryImpl @Inject constructor(
@@ -31,6 +32,10 @@ class MovieRepositoryImpl @Inject constructor(
 
     override suspend fun getMovieReviews(movieId: Int): List<MovieReviewModel> {
         return movieApi.getMovieReviews(movieId = movieId).results?.mapToModel() ?: throw Exception("data not found")
+    }
+
+    override suspend fun getMovieTrailerKey(movieId: Int): String {
+        return movieApi.getMovieTrailer(movieId).results?.mapToModel() ?: ""
     }
 
 }

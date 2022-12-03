@@ -1,4 +1,4 @@
-package net.hafiznaufalr.movie.data.movie.response.reviews
+package net.hafiznaufalr.movie.data.movie.response
 
 
 import com.google.gson.annotations.SerializedName

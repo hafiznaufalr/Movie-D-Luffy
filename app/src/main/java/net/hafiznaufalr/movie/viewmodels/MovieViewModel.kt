@@ -11,10 +11,7 @@ import net.hafiznaufalr.movie.data.movie.model.MovieDataModel
 import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.domain.base.toResult
-import net.hafiznaufalr.movie.domain.movie.GenreUseCase
-import net.hafiznaufalr.movie.domain.movie.NowPlayingUseCase
-import net.hafiznaufalr.movie.domain.movie.PopularUseCase
-import net.hafiznaufalr.movie.domain.movie.ReviewUseCase
+import net.hafiznaufalr.movie.domain.movie.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,7 +19,8 @@ class MovieViewModel @Inject constructor(
     private val nowPlayingUseCase: NowPlayingUseCase,
     private val popularUseCase: PopularUseCase,
     private val genreUseCase: GenreUseCase,
-    private val reviewUseCase: ReviewUseCase
+    private val reviewUseCase: ReviewUseCase,
+    private val trailerUseCase: TrailerUseCase
 ) : ViewModel() {
     private val _nowPlaying = MutableLiveData<ResultData<MovieDataModel>>()
     val nowPlaying: LiveData<ResultData<MovieDataModel>>
@@ -39,6 +37,10 @@ class MovieViewModel @Inject constructor(
     private val _reviews = MutableLiveData<ResultData<List<MovieReviewModel>>>()
     val reviews: LiveData<ResultData<List<MovieReviewModel>>>
         get() = _reviews
+
+    private val _trailerKey = MutableLiveData<ResultData<String>>()
+    val trailerKey: LiveData<ResultData<String>>
+        get() = _trailerKey
 
     fun getNowPlaying() {
         _nowPlaying.value = ResultData.Loading
@@ -65,6 +67,13 @@ class MovieViewModel @Inject constructor(
         _reviews.value = ResultData.Loading
         viewModelScope.launch {
             reviewUseCase.addParam(movieId).invoke().toResult().run(_reviews::postValue)
+        }
+    }
+
+    fun getMovieTrailerKey(movieId: Int) {
+        _trailerKey.value = ResultData.Loading
+        viewModelScope.launch {
+            trailerUseCase.addParam(movieId).invoke().toResult().run(_trailerKey::postValue)
         }
     }
 }

@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/item_genre.xml" value="0.38676503499348963" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/item_now_playing.xml" value="0.29375" />
-        <entry key="app/src/main/res/layout/item_popular.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/layout/item_popular.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_review.xml" value="0.25364583333333335" />
       </map>
     </option>

@@ -2,7 +2,7 @@ package net.hafiznaufalr.movie.data.movie.mapper
 
 import net.hafiznaufalr.movie.data.movie.model.MovieReviewAuthorModel
 import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
-import net.hafiznaufalr.movie.data.movie.response.reviews.MovieReviewResponse
+import net.hafiznaufalr.movie.data.movie.response.MovieReviewResponse
 
 fun List<MovieReviewResponse>.mapToModel(): List<MovieReviewModel> {
     return this.map {

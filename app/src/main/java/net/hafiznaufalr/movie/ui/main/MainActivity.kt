@@ -161,7 +161,6 @@ class MainActivity : MovieBaseActivity<ActivityMainBinding>() {
     }
 
     private fun showLoadMore(show: Boolean) {
-
         binding.loadMore.rootView.isVisible = show
     }
 

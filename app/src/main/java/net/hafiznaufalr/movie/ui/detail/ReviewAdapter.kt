@@ -10,6 +10,7 @@ import net.hafiznaufalr.movie.BuildConfig
 import net.hafiznaufalr.movie.R
 import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.databinding.ItemReviewBinding
+import net.hafiznaufalr.movie.utils.generalDateHelper
 
 class ReviewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -35,7 +36,7 @@ class ReviewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(item: MovieReviewModel) {
             binding.textViewAuthor.text = item.author
             binding.textViewRating.text = String.format("%s/10", item.authorDetails.rating)
-            binding.textViewDate.text = item.createdAt
+            binding.textViewDate.text = item.createdAt.generalDateHelper("yyyy-MM-dd'T'HH:mm:ss.SS'Z'", "dd MMMM yyyy HH.mm")
             binding.textViewReview.text = item.content
 
             Glide.with(binding.imageViewAvatar.context)

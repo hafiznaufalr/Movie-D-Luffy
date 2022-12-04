@@ -19,6 +19,7 @@ import net.hafiznaufalr.movie.databinding.ActivityDetailMovieBinding
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.ui.base.MovieBaseActivity
 import net.hafiznaufalr.movie.utils.ItemHorizontalMarginDecoration
+import net.hafiznaufalr.movie.utils.generalDateHelper
 import net.hafiznaufalr.movie.viewmodels.MovieViewModel
 
 class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
@@ -62,7 +63,7 @@ class DetailMovieActivity : MovieBaseActivity<ActivityDetailMovieBinding>() {
         intent.getParcelableExtra<MovieModel>(OBJ_MOVIE)?.let {
             binding.textViewTitle.text = it.title
             binding.textViewRating.text = String.format("%s/10", it.voteAverage)
-            binding.textViewReleaseDate.text = it.releaseDate
+            binding.textViewReleaseDate.text = it.releaseDate.generalDateHelper("yyyy-MM-dd", "dd MMMM yyyy")
             binding.textViewPopularity.text = it.popularity.toString()
             binding.textViewDescription.text = it.overview
 

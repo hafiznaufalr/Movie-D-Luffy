@@ -1,8 +1,8 @@
-package net.hafiznaufalr.movie.domain.movie
+package net.hafiznaufalr.movie.domain.movie.usecase
 
-import net.hafiznaufalr.movie.data.movie.MovieRepository
-import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.domain.base.BaseUseCase
+import net.hafiznaufalr.movie.domain.movie.MovieRepository
 import javax.inject.Inject
 
 class ReviewUseCase @Inject constructor(

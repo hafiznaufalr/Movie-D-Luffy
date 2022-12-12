@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import net.hafiznaufalr.movie.data.movie.MovieRepository
 import net.hafiznaufalr.movie.data.movie.MovieRepositoryImpl
+import net.hafiznaufalr.movie.domain.movie.MovieRepository
 import javax.inject.Singleton
 
 @Module

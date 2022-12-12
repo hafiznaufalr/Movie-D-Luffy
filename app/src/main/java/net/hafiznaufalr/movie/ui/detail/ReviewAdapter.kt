@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import net.hafiznaufalr.movie.BuildConfig
 import net.hafiznaufalr.movie.R
-import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.databinding.ItemReviewBinding
 import net.hafiznaufalr.movie.utils.generalDateHelper
 

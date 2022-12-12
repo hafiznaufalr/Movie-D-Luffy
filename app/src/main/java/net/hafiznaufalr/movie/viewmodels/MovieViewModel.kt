@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import net.hafiznaufalr.movie.data.movie.model.GenreModel
-import net.hafiznaufalr.movie.data.movie.model.MovieDataModel
-import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
+import net.hafiznaufalr.movie.domain.movie.model.GenreModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieDataModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.domain.base.toResult
-import net.hafiznaufalr.movie.domain.movie.*
+import net.hafiznaufalr.movie.domain.movie.usecase.*
 import javax.inject.Inject
 
 @HiltViewModel

@@ -1,19 +1,12 @@
 package net.hafiznaufalr.movie.data.movie
 
 import net.hafiznaufalr.movie.data.movie.mapper.mapToModel
-import net.hafiznaufalr.movie.data.movie.model.GenreModel
-import net.hafiznaufalr.movie.data.movie.model.MovieDataModel
-import net.hafiznaufalr.movie.data.movie.model.MovieReviewModel
+import net.hafiznaufalr.movie.domain.movie.model.GenreModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieDataModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieReviewModel
 import net.hafiznaufalr.movie.data.movie.remote.MovieApi
+import net.hafiznaufalr.movie.domain.movie.MovieRepository
 import javax.inject.Inject
-
-interface MovieRepository {
-    suspend fun getNowPlayingMovie(): MovieDataModel
-    suspend fun getPopularMovie(page: Int): MovieDataModel
-    suspend fun getMovieGenre(): List<GenreModel>
-    suspend fun getMovieReviews(movieId: Int): List<MovieReviewModel>
-    suspend fun getMovieTrailerKey(movieId: Int): String
-}
 
 class MovieRepositoryImpl @Inject constructor(
     private val movieApi: MovieApi

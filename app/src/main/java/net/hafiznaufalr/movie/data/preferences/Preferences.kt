@@ -3,7 +3,7 @@ package net.hafiznaufalr.movie.data.preferences
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import net.hafiznaufalr.movie.data.movie.model.GenreModel
+import net.hafiznaufalr.movie.domain.movie.model.GenreModel
 
 object Preferences {
     private const val KEY_GENRES = "KEY_GENRES"

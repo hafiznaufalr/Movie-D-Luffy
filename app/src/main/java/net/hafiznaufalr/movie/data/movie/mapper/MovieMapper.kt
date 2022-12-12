@@ -1,7 +1,7 @@
 package net.hafiznaufalr.movie.data.movie.mapper
 
-import net.hafiznaufalr.movie.data.movie.model.MovieDataModel
-import net.hafiznaufalr.movie.data.movie.model.MovieModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieDataModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieModel
 import net.hafiznaufalr.movie.data.movie.response.BaseResponse
 import net.hafiznaufalr.movie.data.movie.response.MovieResponse
 import net.hafiznaufalr.movie.data.preferences.Preferences

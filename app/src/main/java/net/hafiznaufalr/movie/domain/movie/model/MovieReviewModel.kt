@@ -1,4 +1,4 @@
-package net.hafiznaufalr.movie.data.movie.model
+package net.hafiznaufalr.movie.domain.movie.model
 
 
 data class MovieReviewModel(

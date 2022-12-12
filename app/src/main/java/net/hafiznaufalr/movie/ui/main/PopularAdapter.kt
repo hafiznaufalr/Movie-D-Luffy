@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import net.hafiznaufalr.movie.BuildConfig
 import net.hafiznaufalr.movie.R
-import net.hafiznaufalr.movie.data.movie.model.MovieModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieModel
 import net.hafiznaufalr.movie.databinding.ItemPopularBinding
 
 class PopularAdapter(

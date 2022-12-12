@@ -14,7 +14,7 @@ import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import net.hafiznaufalr.movie.BuildConfig
 import net.hafiznaufalr.movie.R
-import net.hafiznaufalr.movie.data.movie.model.MovieModel
+import net.hafiznaufalr.movie.domain.movie.model.MovieModel
 import net.hafiznaufalr.movie.databinding.ActivityDetailMovieBinding
 import net.hafiznaufalr.movie.domain.base.ResultData
 import net.hafiznaufalr.movie.ui.base.MovieBaseActivity
